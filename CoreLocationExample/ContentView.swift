@@ -17,49 +17,80 @@ struct ContentView: View {
     @State var yaw = 0.0
     @State var roll = 0.0
     @State var phoneStatus = "Unknown"
+    @State var driveMode = true
     
     var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Text("Core Location Data")
-                    .font(.headline)
-                    .fontWeight(.black)                   
-                Spacer()
-            }
-            .background(.blue)
+        
+        NavigationView {
             VStack {
-                Text("Distance travelled: \(locationFetcher.totalDistance, specifier: "%.2f") KM")
+                HStack {
+                    Spacer()
+                    Text("Core Location Data")
+                        .font(.headline)
+                        .fontWeight(.black)
+                    Spacer()
+                }
+                .background(.blue)
+                VStack {
+                    Text("Distance travelled: \(locationFetcher.totalDistance, specifier: "%.2f") KM")
+                       
+                    Text("Speed: \(locationFetcher.speed, specifier: "%.2f") KM/h")
+                }
+                .padding(2)
+                HStack {
+                    Spacer()
+                    Text("Core Motion Data")
+                        .font(.headline)
+                        .fontWeight(.black)
+                       
+                    Spacer()
+                }
+                .background(.pink)
+                VStack {
+                    Text("Pitch: \(pitch, specifier: "%.5f")")
+                    Text("Yaw: \(yaw, specifier: "%.5f")")
+                    Text("Roll: \(roll, specifier: "%.5f")")
                    
-                Text("Speed: \(locationFetcher.speed, specifier: "%.2f") KM/h")
-            }
-            .padding(2)
-            HStack {
-                Spacer()
-                Text("Core Motion Data")
-                    .font(.headline)
+                }
+                .padding(2)
+                Text("Device Status:\(phoneStatus)")
                     .fontWeight(.black)
+                    .font(.subheadline)
+                    .padding(5)
+                    .background(.yellow)
+                    .cornerRadius(10)
+            } .onAppear(perform: {
+                startFetchinglocationData()
+                startUpdatingMotion()
+                    
+            }).navigationTitle("Location-Motion Test")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {self.driveMode.toggle()
+                               if self.driveMode == false {
+                                   locationFetcher.manager.stopUpdatingLocation()
+                                   print("location update has been stopped.")
+                               }
+                               else {
+                                   startFetchinglocationData()
+                               }}, label: {
+                                   Text(driveMode ? "Disable Location" : "Enable Location")
+                                       
+                                       .font(.footnote)
+                                       .fontWeight(.semibold)
+                                       .padding(.trailing, 10)
+                                       .padding(.vertical, 4)
+                                       .frame(alignment: .center)
+                               }
+                                )
+                        .background(driveMode ? Color.red : Color.green)
+                        .foregroundColor(.white)
+                        .cornerRadius(50)
+                }
+                }
                    
-                Spacer()
-            }
-            .background(.pink)
-            VStack {
-                Text("Pitch: \(pitch, specifier: "%.5f")")
-                Text("Yaw: \(yaw, specifier: "%.5f")")
-                Text("Roll: \(roll, specifier: "%.5f")")
-               
-            }
-            .padding(2)
-            Text("Device Status:\(phoneStatus)")
-                .fontWeight(.black)
-                .font(.subheadline)
-                .padding(5)
-                .background(.yellow)
-                .cornerRadius(10)
-        } .onAppear(perform: {
-            startFetchinglocationData()
-            startUpdatingMotion()
-        })
+        }
+            
     }
     func startFetchinglocationData() {
         self.locationFetcher.start()
