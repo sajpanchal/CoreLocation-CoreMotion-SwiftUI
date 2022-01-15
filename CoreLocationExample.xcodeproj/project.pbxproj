@@ -12,6 +12,7 @@
 		72188D9A278E4BE500461DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72188D99278E4BE500461DC1 /* Assets.xcassets */; };
 		72188D9D278E4BE500461DC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72188D9C278E4BE500461DC1 /* Preview Assets.xcassets */; };
 		72188DA4278E4C8700461DC1 /* LocationFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72188DA3278E4C8700461DC1 /* LocationFetcher.swift */; };
+		72DDEA53279336FB0091CCC8 /* MotionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72DDEA52279336FB0091CCC8 /* MotionManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		72188D9C278E4BE500461DC1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		72188DA3278E4C8700461DC1 /* LocationFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFetcher.swift; sourceTree = "<group>"; };
 		723CC2852791D2FC00905C72 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		72DDEA52279336FB0091CCC8 /* MotionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				723CC2852791D2FC00905C72 /* Info.plist */,
 				72188D95278E4BE400461DC1 /* CoreLocationExampleApp.swift */,
 				72188D97278E4BE400461DC1 /* ContentView.swift */,
+				72DDEA52279336FB0091CCC8 /* MotionManager.swift */,
 				72188DA3278E4C8700461DC1 /* LocationFetcher.swift */,
 				72188D99278E4BE500461DC1 /* Assets.xcassets */,
 				72188D9B278E4BE500461DC1 /* Preview Content */,
@@ -145,6 +148,7 @@
 				72188D98278E4BE400461DC1 /* ContentView.swift in Sources */,
 				72188D96278E4BE400461DC1 /* CoreLocationExampleApp.swift in Sources */,
 				72188DA4278E4C8700461DC1 /* LocationFetcher.swift in Sources */,
+				72DDEA53279336FB0091CCC8 /* MotionManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
